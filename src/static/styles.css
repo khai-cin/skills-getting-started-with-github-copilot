@@ -117,14 +117,34 @@ section h3 {
   background: rgba(26, 35, 126, 0.18);
 }
 
+.participants-list {
+  list-style: none;
+}
+
 .participant-item {
   padding: 6px 0;
   font-size: 0.94rem;
   color: #263343;
   border-bottom: 1px dashed rgba(26, 35, 126, 0.04);
-  /* slightly indent bullets for a cleaner look */
-  text-indent: -6px;
-  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-participant {
+  background-color: transparent;
+  color: #c62828;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.delete-participant:hover {
+  opacity: 1;
+  background-color: transparent;
 }
 
 /* Make the muted placeholder lighter and italic */

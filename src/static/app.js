@@ -63,8 +63,50 @@ document.addEventListener("DOMContentLoaded", () => {
             const li = document.createElement("li");
             li.className = "participant-item";
             li.setAttribute("role", "listitem");
-            // textContent keeps things safe from injection
-            li.textContent = p;
+            
+            const participantSpan = document.createElement("span");
+            participantSpan.textContent = p;
+            li.appendChild(participantSpan);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.className = "delete-participant";
+            deleteButton.setAttribute("aria-label", `Unregister ${p}`);
+            deleteButton.innerHTML = "×";
+            deleteButton.onclick = async (e) => {
+              e.preventDefault();
+              try {
+                const response = await fetch(
+                  `/activities/${encodeURIComponent(name)}/unregister?email=${encodeURIComponent(p)}`,
+                  {
+                    method: "DELETE",
+                  }
+                );
+                const result = await response.json();
+
+                if (response.ok) {
+                  messageDiv.textContent = result.message;
+                  messageDiv.className = "message success";
+                  // Refresh the activities list to show updated participants
+                  fetchActivities();
+                } else {
+                  messageDiv.textContent = result.detail || "An error occurred";
+                  messageDiv.className = "message error";
+                }
+
+                messageDiv.classList.remove("hidden");
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                  messageDiv.classList.add("hidden");
+                }, 5000);
+
+              } catch (error) {
+                messageDiv.textContent = "Failed to unregister. Please try again.";
+                messageDiv.className = "message error";
+                messageDiv.classList.remove("hidden");
+                console.error("Error unregistering:", error);
+              }
+            };
+            li.appendChild(deleteButton);
             ul.appendChild(li);
           });
         } else {
