@@ -74,6 +74,85 @@ section h3 {
   margin-bottom: 8px;
 }
 
+/* Participants section styling */
+.participants-section {
+  margin-top: 12px;
+  padding: 12px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border-radius: 10px;
+  border: 1px solid rgba(26, 35, 126, 0.06);
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+}
+
+/* Slightly larger, bolder title inside the participants box */
+.participants-title {
+  margin: 0 0 8px 0;
+  font-size: 0.98rem;
+  color: #0f1b66;
+  font-weight: 800;
+}
+
+/* Constrain the participants list and enable a styled scrollbar */
+.participants-list {
+  list-style: disc inside;
+  margin: 0;
+  padding: 0 0 0 14px;
+  max-height: 140px;
+  overflow: auto;
+  padding-right: 6px; /* room for scrollbar */
+}
+
+/* Custom scrollbar for WebKit-based browsers */
+.participants-list::-webkit-scrollbar {
+  width: 8px;
+}
+.participants-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.participants-list::-webkit-scrollbar-thumb {
+  background: rgba(26, 35, 126, 0.12);
+  border-radius: 8px;
+}
+.participants-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 35, 126, 0.18);
+}
+
+.participants-list {
+  list-style: none;
+}
+
+.participant-item {
+  padding: 6px 0;
+  font-size: 0.94rem;
+  color: #263343;
+  border-bottom: 1px dashed rgba(26, 35, 126, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-participant {
+  background-color: transparent;
+  color: #c62828;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.delete-participant:hover {
+  opacity: 1;
+  background-color: transparent;
+}
+
+/* Make the muted placeholder lighter and italic */
+.participant-item.muted {
+  color: #8a8f98;
+  font-style: italic;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
